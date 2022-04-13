@@ -1,0 +1,22 @@
+<table class="table table-striped table-success" >
+
+    <thead>
+        <tr>
+
+            <th>Estado</th>
+            <th>Numero de pessoas</th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+         <tr *ngFor="let p of pessoasPorEstado | keyvalue">
+    
+            <td>{{p.key}}</td>
+            <td>{{p.value}}</td>
+         
+        </tr>  
+    </tbody>
+
+</table>

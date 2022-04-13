@@ -1,0 +1,22 @@
+form{
+    width: 50%;
+    min-width: 400px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+    
+}
+
+form input, select{
+    margin-bottom: 10px;
+}
+#botoes{
+    display: flex;
+
+    align-items: flex-start;
+    gap: 10px;
+    
+}
+
+
+
