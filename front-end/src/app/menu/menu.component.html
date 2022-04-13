@@ -13,8 +13,8 @@
          
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Nome da pessoa" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+          <input class="form-control me-2" type="search" [(ngModel)]="nomeFilter" placeholder="Nome do cliente" aria-label="Search">
+          <button class="btn btn-outline-light" type="button" (click)="pesquisar()">Search</button>
         </form>
       </div>
     </div>

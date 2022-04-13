@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuComponent } from '../menu/menu.component';
 import { Pessoa } from '../models/Pessoa';
 import { LocalidadeService } from '../services/localidade.service';
 import { PessoaService } from '../services/pessoa.service';
+
+
+MenuComponent
 
 @Component({
   selector: 'app-pg1',
@@ -41,8 +45,6 @@ export class Pg1Component implements OnInit {
   //cidade setada no cbx
   cidade: string = "0"
 
-  telMask= '(00) 0000-0000'
-
   constructor(private pessoaService: PessoaService,
     private localidadeService: LocalidadeService) { }
 
@@ -50,12 +52,8 @@ export class Pg1Component implements OnInit {
     this.listarPessoas()
     this.listarEstados()
 
-    if(length>10){
-      this.telMask='(00) 0 0000-0000'
-    }else{
-      this.telMask= '(00) 0000-0000'
-   }
   }
+
 
   listarPessoas() {
     this.pessoaService.listar().subscribe(r => {
@@ -88,6 +86,7 @@ export class Pg1Component implements OnInit {
     this.cidade = this.objPessoa.cidade
 
     this.indiceAtual = index
+    this.limparBordaVermelha()
 
   }
 
@@ -109,9 +108,9 @@ export class Pg1Component implements OnInit {
 
       if (letra == '@') {
 
-        if(temArroba == true){
+        if (temArroba == true) {
           temCaracterEspecial = true
-        }else{
+        } else {
           temArroba = true;
         }
         if (i != 0) {
@@ -129,11 +128,11 @@ export class Pg1Component implements OnInit {
 
     }
 
-    if(!temEspaco && !temCaracterEspecial && temArroba && charDepois && charAntes){
+    if (!temEspaco && !temCaracterEspecial && temArroba && charDepois && charAntes) {
       document.getElementsByName("email")[0].style.border = "3px solid black"
       return true
     }
-    else{
+    else {
       document.getElementsByName("email")[0].style.border = "3px solid red"
       return false
     }
@@ -143,20 +142,12 @@ export class Pg1Component implements OnInit {
 
     let isFone = true
 
-    if (fone.length > 11 || fone.length < 8) {
+    if (fone.length > 15 || fone.length < 8) {
       isFone = false
     }
-
-    for(let i = 0; i<fone.length; i++ ){
-
-      if (Number.isNaN(parseInt(fone.charAt(i)))) {
-        isFone = false
-        break;
-      }
-    }
-    if(isFone){
+    if (isFone) {
       document.getElementsByName("telefone")[0].style.border = "3px solid black"
-    }else{
+    } else {
       document.getElementsByName("telefone")[0].style.border = "3px solid red"
     }
 
@@ -201,7 +192,7 @@ export class Pg1Component implements OnInit {
     if (!(nome == "" || temNumero)) {
       document.getElementsByName("nome")[0].style.border = "3px solid black"
       return true
-    }else{
+    } else {
       document.getElementsByName("nome")[0].style.border = "3px solid red"
       return false
     }
@@ -240,11 +231,10 @@ export class Pg1Component implements OnInit {
       } else {
         this.ativarAlertaVermelho("Nome ja esta em uso")
       }
-
     }
   }
 
-  ativarAlertaVermelho(mensagem:string) {
+  ativarAlertaVermelho(mensagem: string) {
     this.mensagem = mensagem
     this.alertRedVisivel = true
     setTimeout(() => {
@@ -252,7 +242,7 @@ export class Pg1Component implements OnInit {
     }, 3000)
   }
 
-  ativarAlertaVerde(mensagem:string){
+  ativarAlertaVerde(mensagem: string) {
     this.mensagem = mensagem
     this.alertGreenVisivel = true
     setTimeout(() => {
@@ -268,7 +258,7 @@ export class Pg1Component implements OnInit {
         this.ativarAlertaVermelho("Nome ja esta em uso")
       }
       else {
-      
+
         this.objPessoa.estado = this.sigla
         this.objPessoa.cidade = this.cidade
 
@@ -281,7 +271,6 @@ export class Pg1Component implements OnInit {
         this.limparCampos()
         this.ativarAlertaVerde("Usuario alterado")
       }
-
     }
   }
 
@@ -296,8 +285,18 @@ export class Pg1Component implements OnInit {
   }
 
   limparCampos() {
+
+    this.limparBordaVermelha()
     this.btnVisivel = true
     this.objPessoa = new Pessoa()
   }
+
+  limparBordaVermelha() {
+    let inputs = document.getElementsByTagName("input")
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].style.border = "3px solid black"
+    }
+  }
+
 
 }

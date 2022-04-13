@@ -1,6 +1,3 @@
-import { Cidade } from "./Cidade";
-import { Estado } from "./Estado";
-
 export class Pessoa{
 
     id:number = 0;
@@ -8,5 +5,5 @@ export class Pessoa{
     email:string = "";
     estado:string = "";
     cidade:string = "";
-    telefone:Number = 0;
+    telefone:string = "";
 }

@@ -3,8 +3,8 @@
     <div id="alertGreen" class="alert alert-success" role="alert" *ngIf="alertGreenVisivel">{{mensagem}}</div>
 
     <input type="text" name="nome" [(ngModel)]="objPessoa.nome" placeholder="Nome" class="form-control" required (blur)="validarNome(objPessoa.nome)">
-    <input type="email" name="email" [(ngModel)]="objPessoa.email" placeholder="Email" class="form-control" required (blur)="validarEmail(objPessoa.email)">
-    <input type="text" name="telefone" [(ngModel)]="objPessoa.telefone" placeholder="Telefone" class="form-control" required (blur)="validarTelefone(objPessoa.telefone.toString())">
+    <input type="text" name="email" [(ngModel)]="objPessoa.email" placeholder="Email" class="form-control" required (blur)="validarEmail(objPessoa.email)">
+    <input type="text" name="telefone" [(ngModel)]="objPessoa.telefone" [dropSpecialCharacters]="false" mask="(00) 0 0000-0000 || (00) 0000-0000"  placeholder="Telefone" class="form-control" required (blur)="validarTelefone(objPessoa.telefone.toString())">
 
     <select name="estados" id="estados" class="form-select" required aria-label="Default select example" [(ngModel)]="sigla"
         (ngModelChange)="listarCidades()">
@@ -23,6 +23,7 @@
     <input type="button" *ngIf="!btnVisivel" (click)="alterar()" value="Alterar" class="btn btn-warning">
     <input type="button" *ngIf="!btnVisivel" (click)="remover()" value="Remover" class="btn btn-danger">
     <input type="button" *ngIf="!btnVisivel" (click)="limparCampos()" value="Cancelar" class="btn btn-secondary">
+    
 </div>
 </form>
 
@@ -33,7 +34,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Pessoa</th>
+            <th>Cliente</th>
             <th>Email</th>
             <th>Telefone</th>
             <th>Estado</th>

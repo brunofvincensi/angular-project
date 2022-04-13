@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pessoa } from '../models/Pessoa';
 import { HttpClient } from '@angular/common/http';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class PessoaService {
 
   alterar(p:Pessoa, id:number):Observable<Pessoa>{
   return this.http.put<Pessoa>('http://localhost:3000/pessoas/'+ id, p)
+  }
+
+  listarPorFiltro(nomeFiltro:string):Pessoa[]{
+
+    
+
+    return []
   }
 
 }
