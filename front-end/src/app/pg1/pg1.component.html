@@ -4,15 +4,17 @@
 
     <input type="text" name="nome" [(ngModel)]="objPessoa.nome" placeholder="Nome" class="form-control" required (blur)="validarNome(objPessoa.nome)">
     <input type="email" name="email" [(ngModel)]="objPessoa.email" placeholder="Email" class="form-control" required (blur)="validarEmail(objPessoa.email)">
-    <input type="number" name="telefone" [(ngModel)]="objPessoa.telefone" placeholder="Telefone" class="form-control" required (blur)="validarTelefone(objPessoa.telefone.toString())">
+    <input type="text" name="telefone" [(ngModel)]="objPessoa.telefone" placeholder="Telefone" class="form-control" required (blur)="validarTelefone(objPessoa.telefone.toString())">
 
     <select name="estados" id="estados" class="form-select" required aria-label="Default select example" [(ngModel)]="sigla"
         (ngModelChange)="listarCidades()">
+        <option value="0">Escolha um estado</option>
         <option *ngFor="let e of estados; let i = index" [ngValue]="e.sigla">{{e.nome}}</option>
 
     </select>
  
     <select name="cidades" id="cidades" class="form-select" required aria-label="Default select example" [(ngModel)]="cidade">
+        <option value="0">Escolha uma cidade</option>
         <option *ngFor="let c of cidades; let i = index" [ngValue]="c.nome">{{c.nome}}</option>
     </select>
     <div id="botoes">

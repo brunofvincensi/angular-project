@@ -2,20 +2,15 @@
 
     <thead>
         <tr>
-
             <th>Estado</th>
             <th>Numero de pessoas</th>
-
-
         </tr>
     </thead>
 
     <tbody>
-         <tr *ngFor="let p of pessoasPorEstado | keyvalue">
-    
+         <tr *ngFor="let p of pessoasPorEstado | keyvalue">    
             <td>{{p.key}}</td>
-            <td>{{p.value}}</td>
-         
+            <td>{{p.value}}</td>         
         </tr>  
     </tbody>
 

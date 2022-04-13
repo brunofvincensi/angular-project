@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../models/Pessoa';
-import { LocalidadeService } from '../services/localidade-service.service';
-import { PessoaService } from '../services/pessoa-service.service';
+import { LocalidadeService } from '../services/localidade.service';
+import { PessoaService } from '../services/pessoa.service';
 
 @Component({
   selector: 'app-pg1',
@@ -36,10 +36,12 @@ export class Pg1Component implements OnInit {
   indiceAtual: number = 0;
 
   //sigla do estado setadada no cbx
-  sigla: string = ""
+  sigla: string = "0"
 
   //cidade setada no cbx
-  cidade: string = ""
+  cidade: string = "0"
+
+  telMask= '(00) 0000-0000'
 
   constructor(private pessoaService: PessoaService,
     private localidadeService: LocalidadeService) { }
@@ -47,6 +49,12 @@ export class Pg1Component implements OnInit {
   ngOnInit(): void {
     this.listarPessoas()
     this.listarEstados()
+
+    if(length>10){
+      this.telMask='(00) 0 0000-0000'
+    }else{
+      this.telMask= '(00) 0000-0000'
+   }
   }
 
   listarPessoas() {
@@ -157,8 +165,6 @@ export class Pg1Component implements OnInit {
 
   validarCampos() {
 
-    console.log(this.objPessoa.telefone)
-
     let validos = false
 
     if (!this.validarNome(this.objPessoa.nome)) {
@@ -166,17 +172,14 @@ export class Pg1Component implements OnInit {
     }
     else if (!this.validarEmail(this.objPessoa.email)) {
       this.ativarAlertaVermelho("Campo email incorreto")
-
     }
-   
     else if (this.objPessoa.telefone == null || !this.validarTelefone(this.objPessoa.telefone.toString())) {
       this.ativarAlertaVermelho("Campo telefone incorreto")
-
     }
-    else if (this.sigla == "") {
+    else if (this.sigla == "0") {
       this.ativarAlertaVermelho("Selecione um estado")
 
-    } else if (this.cidade == "") {
+    } else if (this.cidade == "0") {
       this.ativarAlertaVermelho("Selecione uma cidade")
 
     } else {
@@ -272,7 +275,6 @@ export class Pg1Component implements OnInit {
         this.pessoas[this.indiceAtual] = this.objPessoa
 
         this.pessoaService.alterar(this.objPessoa, this.objPessoa.id).subscribe(r => {
-          console.log(r)
         })
 
         this.objPessoa = new Pessoa()
@@ -286,7 +288,6 @@ export class Pg1Component implements OnInit {
   remover() {
 
     this.pessoaService.remover(this.objPessoa.id).subscribe(x => {
-      console.log(x)
     })
 
     this.pessoas.splice(this.indiceAtual, 1)

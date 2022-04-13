@@ -3,8 +3,6 @@ form{
     min-width: 400px;
     margin-top: 20px;
     margin-left: 20px;
-
-    
 }
 
 form input, select{
@@ -12,11 +10,14 @@ form input, select{
 }
 #botoes{
     display: flex;
-
     align-items: flex-start;
-    gap: 10px;
-    
+    gap: 10px;   
 }
 
-
-
+#alertRed,
+#alertGreen{
+    position: absolute;
+    width: 50%;
+    transform: translateX(+50%);
+    text-align: center;
+}
