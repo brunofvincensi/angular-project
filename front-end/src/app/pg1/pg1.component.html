@@ -1,35 +1,38 @@
- <form>
+<form>
     <div id="alertRed" class="alert alert-danger" role="alert" *ngIf="alertRedVisivel">{{mensagem}}</div>
     <div id="alertGreen" class="alert alert-success" role="alert" *ngIf="alertGreenVisivel">{{mensagem}}</div>
 
-    <input type="text" name="nome" [(ngModel)]="objPessoa.nome" placeholder="Nome" class="form-control" required (blur)="validarNome(objPessoa.nome)">
-    <input type="text" name="email" [(ngModel)]="objPessoa.email" placeholder="Email" class="form-control" required (blur)="validarEmail(objPessoa.email)">
-    <input type="text" name="telefone" [(ngModel)]="objPessoa.telefone" [dropSpecialCharacters]="false" mask="(00) 0 0000-0000 || (00) 0000-0000"  placeholder="Telefone" class="form-control" required (blur)="validarTelefone(objPessoa.telefone.toString())">
+    <input type="text" name="nome" [(ngModel)]="objPessoa.nome" placeholder="Nome" class="form-control" required
+        (blur)="validarNome(objPessoa.nome)">
+    <input type="text" name="email" [(ngModel)]="objPessoa.email" placeholder="Email" class="form-control" required
+        (blur)="validarEmail(objPessoa.email)">
+    <input type="text" name="telefone" [(ngModel)]="objPessoa.telefone" [dropSpecialCharacters]="false"
+        mask="(00) 0 0000-0000 || (00) 0000-0000" placeholder="Telefone" class="form-control" required
+        (blur)="validarTelefone(objPessoa.telefone.toString())">
 
-    <select name="estados" id="estados" class="form-select" required aria-label="Default select example" [(ngModel)]="sigla"
-        (ngModelChange)="listarCidades()">
+    <select name="estados" id="estados" class="form-select" required aria-label="Default select example"
+        [(ngModel)]="sigla" (ngModelChange)="listarCidades()">
         <option value="0">Escolha um estado</option>
         <option *ngFor="let e of estados; let i = index" [ngValue]="e.sigla">{{e.nome}}</option>
 
     </select>
- 
-    <select name="cidades" id="cidades" class="form-select" required aria-label="Default select example" [(ngModel)]="cidade">
+
+    <select name="cidades" id="cidades" class="form-select" required aria-label="Default select example"
+        [(ngModel)]="cidade">
         <option value="0">Escolha uma cidade</option>
         <option *ngFor="let c of cidades; let i = index" [ngValue]="c.nome">{{c.nome}}</option>
     </select>
     <div id="botoes">
 
-    <input type="button" *ngIf="btnVisivel" (click)="cadastrar()" value="Cadastrar" class="btn btn-primary">
-    <input type="button" *ngIf="!btnVisivel" (click)="alterar()" value="Alterar" class="btn btn-warning">
-    <input type="button" *ngIf="!btnVisivel" (click)="remover()" value="Remover" class="btn btn-danger">
-    <input type="button" *ngIf="!btnVisivel" (click)="limparCampos()" value="Cancelar" class="btn btn-secondary">
-    
-</div>
+        <input type="button" *ngIf="btnVisivel" (click)="cadastrar()" value="Cadastrar" class="btn btn-primary">
+        <input type="button" *ngIf="!btnVisivel" (click)="alterar()" value="Alterar" class="btn btn-warning">
+        <input type="button" *ngIf="!btnVisivel" (click)="remover()" value="Remover" class="btn btn-danger">
+        <input type="button" *ngIf="!btnVisivel" (click)="limparCampos()" value="Cancelar" class="btn btn-secondary">
+
+    </div>
 </form>
 
-
- 
-<table class="table table-striped table-success" >
+<table class="table table-striped table-success">
 
     <thead>
         <tr>

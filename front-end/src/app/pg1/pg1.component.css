@@ -1,21 +1,23 @@
-form{
+form {
     width: 50%;
     min-width: 400px;
     margin-top: 20px;
     margin-left: 20px;
 }
 
-form input, select{
+form input,
+select {
     margin-bottom: 10px;
 }
-#botoes{
+
+#botoes {
     display: flex;
     align-items: flex-start;
-    gap: 10px;   
+    gap: 10px;
 }
 
 #alertRed,
-#alertGreen{
+#alertGreen {
     position: absolute;
     width: 50%;
     transform: translateX(+50%);

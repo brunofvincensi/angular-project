@@ -6,20 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  nomeFilter: string = "";
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  pesquisar() {
-    
-    
-
-
-  }
-
-
 
 }

@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
 import { Pessoa } from '../models/Pessoa';
 import { LocalidadeService } from '../services/localidade.service';
 import { PessoaService } from '../services/pessoa.service';
-
-
-MenuComponent
 
 @Component({
   selector: 'app-pg1',
@@ -68,9 +64,7 @@ export class Pg1Component implements OnInit {
   }
 
   listarCidades() {
-
-    this.cidade = ""
-
+    this.cidade = "0"
     this.localidadeService.listarCidadesPorEstado(this.sigla).subscribe(response => {
       this.cidades = response
     })
@@ -128,7 +122,7 @@ export class Pg1Component implements OnInit {
 
     }
 
-    if (!temEspaco && !temCaracterEspecial && temArroba && charDepois && charAntes) {
+    if (!temEspaco && !temCaracterEspecial && temArroba && charDepois && charAntes && this.confirmacaoEmail(email)) {
       document.getElementsByName("email")[0].style.border = "3px solid black"
       return true
     }
@@ -136,6 +130,11 @@ export class Pg1Component implements OnInit {
       document.getElementsByName("email")[0].style.border = "3px solid red"
       return false
     }
+  }
+
+  confirmacaoEmail(email: string) {
+    const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return res.test(String(email).toLowerCase());
   }
 
   validarTelefone(fone: string) {
@@ -297,6 +296,4 @@ export class Pg1Component implements OnInit {
       inputs[i].style.border = "3px solid black"
     }
   }
-
-
 }

@@ -9,27 +9,27 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class PessoaService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  listar():Observable<Pessoa[]>{
+  listar(): Observable<Pessoa[]> {
     return this.http.get<Pessoa[]>('http://localhost:3000/pessoas')
   }
 
-  cadastrar(p:Pessoa):Observable<Pessoa>{
+  cadastrar(p: Pessoa): Observable<Pessoa> {
     return this.http.post<Pessoa>('http://localhost:3000/pessoas', p)
   }
 
-  remover(id:number):Observable<any>{
-   return this.http.delete<Pessoa>('http://localhost:3000/pessoas/'+ id)
+  remover(id: number): Observable<any> {
+    return this.http.delete<Pessoa>('http://localhost:3000/pessoas/' + id)
   }
 
-  alterar(p:Pessoa, id:number):Observable<Pessoa>{
-  return this.http.put<Pessoa>('http://localhost:3000/pessoas/'+ id, p)
+  alterar(p: Pessoa, id: number): Observable<Pessoa> {
+    return this.http.put<Pessoa>('http://localhost:3000/pessoas/' + id, p)
   }
 
-  listarPorFiltro(nomeFiltro:string):Pessoa[]{
+  listarPorFiltro(nomeFiltro: string): Pessoa[] {
 
-    
+
 
     return []
   }
