@@ -10,6 +10,11 @@
 - VS Code - IDE
 - GIT
 
+## Pré-requisitos
+- NodeJS
+- Npm
+- Angular CLI
+
 ## Como rodar
 
 Baixe ou clone este repositório usando 
